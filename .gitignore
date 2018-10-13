@@ -1,0 +1,9 @@
+# directories
+misc/
+files/ssh-keys
+
+# files
+host_vars/localhost
+*.retry
+*.log
+hosts

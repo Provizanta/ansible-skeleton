@@ -1,0 +1,18 @@
+- hosts: localhost 
+  roles:
+    - role: user/git
+      vars:
+        settings:
+          user:
+            name: "{{ user.name }}"
+            email: " {{ user.email }}"
+    - role: user/keepass
+      vars:
+        plugins:
+          - keeagent
+          - tray-icon
+          - rpc
+          - status-notifier
+  become: no
+  environment: "{{ proxy_env if proxy_env is defined else '' }}"
+ 
