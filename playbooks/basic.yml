@@ -11,8 +11,8 @@
         plugins:
           - keeagent
           - tray-icon
-          - rpc
           - status-notifier
+    - user/dev/python
   become: no
   environment: "{{ proxy_env if proxy_env is defined else '' }}"
  
