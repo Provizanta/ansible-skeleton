@@ -1,0 +1,57 @@
+---
+
+- hosts: localhost
+  pre_tasks:
+    - name: generate GPG keys
+      import_role:
+        name: user/gpg/generate
+      vars:
+        keys: "{{ user.gpg_keys.generate }}"
+      when:
+        - user is defined
+        - user.gpg_keys is defined
+        - user.gpg_keys.generate is defined
+
+    - name: export GPG keys
+      import_role:
+        name: user/gpg/export
+      vars:
+        keys: "{{ user.gpg_keys.export['keys'] }}"
+        export_dir: "{{ user.gpg_keys.export.export_dir }}"
+        export_trust: "{{ user.gpg_keys.export.export_trust or True }}"
+      when:
+        - user is defined
+        - user.gpg_keys is defined
+        - user.gpg_keys.export is defined  
+        - user.gpg_keys.export['keys'] is defined
+        - user.gpg_keys.export.export_dir is defined
+
+    - name: import GPG keys
+      import_role:
+        name: user/gpg/import
+      vars:
+        trusts: "{{ user.gpg_keys.import.trusts | default([]) }}"
+        keys: "{{ user.gpg_keys.import['keys'] }}"
+      when:
+        - user is defined
+        - user.gpg_keys is defined
+        - user.gpg_keys.import is defined
+        - user.gpg_keys.import['keys'] is defined
+  
+  roles:
+    - role: user/git
+      vars:
+        settings:
+          user:
+            name: "{{ user.name }}"
+            email: " {{ user.email }}"
+    - role: user/keepass
+      vars:
+        plugins:
+          - keeagent
+          - tray-icon
+          - status-notifier
+    - user/dev/python
+  
+  become: no
+  environment: "{{ proxy_env if proxy_env is defined else '' }}"
