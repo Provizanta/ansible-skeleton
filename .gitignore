@@ -1,11 +1,16 @@
-# directories
 files/ssh-keys
 files/gpg-keys
+
+!group_vars/all
+group_vars/
+host_vars/localhost
+
 misc/
 
-# files
-host_vars/localhost
+playbooks/test
+roles/
+!roles/user
+
 hosts
-playbooks/test.yml
 *.retry
 *.log
