@@ -3,7 +3,6 @@ files/gpg-keys
 
 !group_vars/all
 group_vars/
-host_vars/localhost
 
 misc/
 
@@ -14,3 +13,4 @@ roles/
 hosts
 *.retry
 *.log
+vault*.yml

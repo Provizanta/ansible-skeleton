@@ -1,0 +1,22 @@
+---
+
+user:
+  name: "{{ vault_user['name'] }}"
+  email: "{{ vault_user['email'] }}"
+
+  gpg_keys:
+    generate:
+      keys:
+        - user: "{{ vault_user['name'] }}"
+          email: "{{ vault_user['email'] }}" 
+          passphrase: "{{ vault_user['gpg']['passphrase'] }}"
+          comment: "{{ vault_user['gpg']['comment'] }}"
+          sub_keys:
+            - purpose: 'sign'
+            - purpose: 'encrypt'
+    export:
+      export_dir: "{{ root_dir }}/files/gpg-keys/"
+      export_trust: True
+      keys:
+        - email: "{{ vault_user['email'] }}"
+          passphrase: "{{ vault_user['gpg']['passphrase'] }}"
