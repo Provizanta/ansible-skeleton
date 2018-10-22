@@ -13,4 +13,4 @@ roles/
 hosts
 *.retry
 *.log
-vault*.yml
+vault*
