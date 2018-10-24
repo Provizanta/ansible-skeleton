@@ -1,5 +1,6 @@
 files/ssh-keys
 files/gpg-keys
+files/ca-trusted
 
 !group_vars/all
 group_vars/
