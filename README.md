@@ -46,18 +46,8 @@ Any playbook can be run by executing a simple command, e.g. to execute a playboo
 
 The extra argument `-K` forces Ansible to request a sudo password.
 
-### Developer playbook
-The **developer** playbook performs a basic developer machine setup. The minimum necessary variables that must be specified are:
+For more details about individual playbooks, see [playbook README](./playbooks/README.md)
 
-```yaml
-vault_user:
-  name: <Insert username here>
-  email: <Insert email here>
-  
-  gpg:
-    passphrase: <secret passphrase>
-    comment: <key comment>
-```
 
 ## Target system
 All of the roles are tested against **`XUbuntu 18.04`**.
