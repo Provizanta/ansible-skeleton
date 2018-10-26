@@ -1,3 +1,5 @@
+.venv/
+
 files/ssh-keys
 files/gpg-keys
 files/ca-trusted
