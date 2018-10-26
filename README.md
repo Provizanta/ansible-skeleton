@@ -36,6 +36,29 @@ To create a basic `hosts` file containing only the *localhost*, execute:
     $ echo "localhost ansible_connection=local" > hosts
 
 
+## Playbooks
+Provided playbooks offer an easy way to setup the *localhost* for a specific role based on the variables stored e.g. in  `group_vars/localhost` file.
+
+### Usage
+Any playbook can be run by executing a simple command, e.g. to execute a playbook `update_system.yml` located in the `playbook/test` directory, invoke the command:
+
+    $ ansible-playbook playbook/test/update_system.yml -K
+
+The extra argument `-K` forces Ansible to request a sudo password.
+
+### Developer playbook
+The **developer** playbook performs a basic developer machine setup. The minimum necessary variables that must be specified are:
+
+```yaml
+vault_user:
+  name: <Insert username here>
+  email: <Insert email here>
+  
+  gpg:
+    passphrase: <secret passphrase>
+    comment: <key comment>
+```
+
 ## Target system
 All of the roles are tested against **`XUbuntu 18.04`**.
 
