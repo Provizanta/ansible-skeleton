@@ -4,7 +4,7 @@
   pre_tasks:
     - name: GPG keys
       import_role:
-        name: user/gpg/profile
+        name: user/gpg
       vars:
         gpg: "{{ user['gpg_keys'] }}"
       when:
