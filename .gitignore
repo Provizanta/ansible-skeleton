@@ -11,8 +11,6 @@ group_vars/
 misc/
 
 playbooks/test
-roles/
-!roles/user
 
 hosts
 *.retry

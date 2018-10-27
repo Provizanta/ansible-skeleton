@@ -1,3 +1,0 @@
-[submodule "roles/user"]
-	path = roles/user
-	url = https://github.com/Teebor-Choka/Provisioning---Ansible-Roles.git
