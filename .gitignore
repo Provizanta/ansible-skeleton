@@ -1,4 +1,5 @@
-.venv/
+.ansible/
+.test/
 
 files/ssh-keys
 files/gpg-keys
