@@ -12,6 +12,9 @@ misc/
 
 playbooks/test
 
+roles/*
+!roles/user
+
 hosts
 *.retry
 *.log
