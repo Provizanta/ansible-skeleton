@@ -13,3 +13,6 @@
 [submodule "roles/user/ca"]
 	path = roles/user/ca
 	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-ca.git
+[submodule "roles/user/shell"]
+	path = roles/user/shell
+	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-shell.git
