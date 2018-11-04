@@ -1,0 +1,16 @@
+---
+
+- hosts: localhost
+  roles:
+    - role: user/shell
+      vars:
+        history:
+          size: 10000
+          filesize: 10000
+          timeformat: '"%Y-%m-%d %H:%M:%S:   "'
+        shopt:
+          cdspell: yes
+          cmdhist: yes
+          dotglob: yes
+  become: no
+  environment: "{{ proxy_env if proxy_env is defined else '' }}"
