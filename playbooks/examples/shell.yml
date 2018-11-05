@@ -12,5 +12,8 @@
           cdspell: yes
           cmdhist: yes
           dotglob: yes
+        set:
+          notify: yes
+          pipefail: yes
   become: no
   environment: "{{ proxy_env if proxy_env is defined else '' }}"
