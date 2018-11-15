@@ -5,6 +5,10 @@
     - role: user/shell
       vars:
         bash:
+          alias:
+            ll: 'ls -alF'
+            la: 'ls -A'
+            l: 'ls -CF'
           history:
             size: 10000
             filesize: 10000
