@@ -16,3 +16,6 @@
 [submodule "roles/user/shell"]
 	path = roles/user/shell
 	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-shell.git
+[submodule "roles/user/latex"]
+	path = roles/user/latex
+	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-latex.git
