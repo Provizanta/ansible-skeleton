@@ -1,0 +1,18 @@
+---
+
+- hosts: localhost
+  roles:
+    - role: user/dev/create/empty_project/cpp
+      vars:
+        path: 
+          ~/test/
+        project:
+          name: cpp
+          description: "cpp project description"
+          author:
+            name: Dezider Lakatos
+            email: test@test.com
+          license: WTFPL
+        scm: git
+  become: no
+  environment: "{{ proxy_env if proxy_env is defined else '' }}"
