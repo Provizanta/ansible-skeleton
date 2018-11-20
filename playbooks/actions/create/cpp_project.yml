@@ -13,6 +13,10 @@
             name: Dezider Lakatos
             email: test@test.com
           license: WTFPL
+        build: cmake
+        test:
+          integration: true
+          unittest: Catch2
         scm: git
   become: no
   environment: "{{ proxy_env if proxy_env is defined else '' }}"
