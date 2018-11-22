@@ -7,8 +7,9 @@
         path: 
           ~/test/
         project:
-          name: cpp
+          name: "my First Project"
           description: "cpp project description"
+          version: 0.5
           author:
             name: Dezider Lakatos
             email: test@test.com
