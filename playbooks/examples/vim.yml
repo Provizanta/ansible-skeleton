@@ -1,0 +1,24 @@
+---
+
+- hosts: localhost
+  roles:
+    - role: user/vim
+      vars:
+          plugin_manager: vundle
+          plugins:
+            - name: 'Valloric/YouCompleteMe'
+            - name: 'nathanaelkane/vim-indent-guides'
+            - name: 'airblade/vim-gitgutter'
+            - name: 'editorconfig/editorconfig-vim'
+            - name: 'itchyny/lightline.vim'
+            - name: 'junegunn/fzf'
+            - name: 'junegunn/fzf.vim'
+            - name: 'mattn/emmet-vim'
+            - name: 'scrooloose/nerdtree'
+            - name: 'terryma/vim-multiple-cursors'
+            - name: 'tpope/vim-eunuch'
+            - name: 'tpope/vim-surround'
+            - name: 'w0rp/ale' 
+
+  become: no
+  environment: "{{ proxy_env if proxy_env is defined else '' }}"

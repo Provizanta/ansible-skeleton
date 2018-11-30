@@ -19,3 +19,6 @@
 [submodule "roles/user/latex"]
 	path = roles/user/latex
 	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-latex.git
+[submodule "roles/user/vim"]
+	path = roles/user/vim
+	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-vim.git
