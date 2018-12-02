@@ -4,21 +4,52 @@
   roles:
     - role: user/vim
       vars:
-          plugin_manager: vundle
-          plugins:
-            - name: 'Valloric/YouCompleteMe'
-            - name: 'nathanaelkane/vim-indent-guides'
-            - name: 'airblade/vim-gitgutter'
-            - name: 'editorconfig/editorconfig-vim'
-            - name: 'itchyny/lightline.vim'
-            - name: 'junegunn/fzf'
-            - name: 'junegunn/fzf.vim'
-            - name: 'mattn/emmet-vim'
-            - name: 'scrooloose/nerdtree'
-            - name: 'terryma/vim-multiple-cursors'
-            - name: 'tpope/vim-eunuch'
-            - name: 'tpope/vim-surround'
-            - name: 'w0rp/ale' 
-
+        flavor: vim
+    - role: user/vim
+      vars:
+        flavor: neovim
+        
+  vars:
+    plugin_manager: vundle
+    settings:
+      set:
+        value:
+          mouse: a
+          wildmode: 'longest,list'
+          backspace: 'indent,eol,start'
+          tabstop: 4
+          shiftwidth: 4
+        property:
+          - expandtab
+          - hlsearch
+          - number
+      other:
+        - 'colorscheme elflord'
+        - 'syntax on'
+    
+    plugins:
+      - name: 'Valloric/YouCompleteMe'
+        set:
+          value:
+            encoding: 'utf-8'
+      - name: 'nathanaelkane/vim-indent-guides'
+      - name: 'airblade/vim-gitgutter'
+        set:
+          value:
+            updatetime: 200
+      - name: 'editorconfig/editorconfig-vim'
+        let:
+          'g:EditorConfig_exclude_patterns': "['scp://.*']"
+      - name: 'itchyny/lightline.vim'
+        set:
+          value:
+            laststatus: 2
+      - name: 'junegunn/fzf.vim'
+      - name: 'mattn/emmet-vim'
+      - name: 'scrooloose/nerdtree'
+      - name: 'terryma/vim-multiple-cursors'
+      - name: 'tpope/vim-eunuch'
+      - name: 'tpope/vim-surround'
+      - name: 'w0rp/ale'
   become: no
   environment: "{{ proxy_env if proxy_env is defined else '' }}"
