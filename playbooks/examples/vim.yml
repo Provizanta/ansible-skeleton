@@ -23,6 +23,7 @@
           - expandtab
           - hlsearch
           - number
+          - hidden
       other:
         - 'colorscheme elflord'
         - 'syntax on'
@@ -44,12 +45,27 @@
         set:
           value:
             laststatus: 2
+            showtabline: 2         
+        other:
+          - 'set guioptions-=e'
+      - name: 'vim-syntastic/syntastic'
+        other:
+          - 'set statusline+=%#warningmsg#'
+          - 'set statusline+=%{SyntasticStatuslineFlag()}'
+          - 'set statusline+=%*'
+        let:
+          'g:syntastic_always_populate_loc_list': 1
+          'g:syntastic_auto_loc_list': 1
+          'g:syntastic_check_on_open': 1
+          'g:syntastic_check_on_wq': 0
+          'g:syntastic_python_pylint_exe': "'python3 -m pylint3'"
+      - name: 'flazz/vim-colorschemes'
       - name: 'junegunn/fzf.vim'
-      - name: 'mattn/emmet-vim'
       - name: 'scrooloose/nerdtree'
       - name: 'terryma/vim-multiple-cursors'
       - name: 'tpope/vim-eunuch'
       - name: 'tpope/vim-surround'
       - name: 'w0rp/ale'
+      - name: 'ludovicchabant/vim-lawrencium'
   become: no
   environment: "{{ proxy_env if proxy_env is defined else '' }}"
