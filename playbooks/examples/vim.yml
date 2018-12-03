@@ -14,6 +14,11 @@
     settings:
       set:
         value:
+          encoding: utf-8
+          termencoding: utf-8
+          updatetime: 200
+          history: 1000
+          undolevels: 1000
           mouse: a
           wildmode: 'longest,list'
           backspace: 'indent,eol,start'
@@ -21,9 +26,12 @@
           shiftwidth: 4
         property:
           - expandtab
+          - incsearch
           - hlsearch
           - number
           - hidden
+          - autoread
+          - ttyfast
       other:
         - 'colorscheme elflord'
         - 'syntax on'
@@ -35,9 +43,6 @@
             encoding: 'utf-8'
       - name: 'nathanaelkane/vim-indent-guides'
       - name: 'airblade/vim-gitgutter'
-        set:
-          value:
-            updatetime: 200
       - name: 'editorconfig/editorconfig-vim'
         let:
           'g:EditorConfig_exclude_patterns': "['scp://.*']"
@@ -62,6 +67,11 @@
       - name: 'flazz/vim-colorschemes'
       - name: 'junegunn/fzf.vim'
       - name: 'scrooloose/nerdtree'
+        let:
+          NERDTreeMapActivateNode: "'<right>'"
+          NERDTreeShowHidden: 1
+        other:
+          - 'nmap <leader>n :NERDTreeToggle<CR>'
       - name: 'terryma/vim-multiple-cursors'
       - name: 'tpope/vim-eunuch'
       - name: 'tpope/vim-surround'
