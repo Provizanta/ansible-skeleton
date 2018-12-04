@@ -1,0 +1,26 @@
+---
+
+- hosts: localhost
+  roles:
+    - role: user/cerebro
+      vars:
+        settings:
+          hotkey: "Control+Shift+Space"
+        plugins:
+          - basic-apps
+          - plugin-convert
+          - decode
+          - encode
+          - timestamp
+          - whois
+          - latex
+          - linux-system-settings
+          - qrcode
+          - linux-system
+          - hash
+          - text-case
+          - wunderground
+          - shell
+          - define
+  become: no
+  environment: "{{ proxy_env if proxy_env is defined else '' }}"

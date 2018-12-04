@@ -22,3 +22,6 @@
 [submodule "roles/user/vim"]
 	path = roles/user/vim
 	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-vim.git
+[submodule "roles/user/cerebro"]
+	path = roles/user/cerebro
+	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-cerebro.git
