@@ -1,5 +1,13 @@
 ---
 
+# inspired by:
+# 1. http://stevelosh.com/blog/2010/09/coming-home-to-vim/#vim-s-feeling
+# 2. https://github.com/nvie/vimrc/blob/master/vimrc
+# 3. https://github.com/junegunn/dotfiles/blob/master/vimrc
+# 4. https://github.com/davidhalter/dotfiles/blob/master/.vimrc
+# 5. https://github.com/jessfraz/.vim
+# 6. https://github.com/humiaozuzu/dot-vimrc
+
 - hosts: localhost
   roles:
     - role: user/vim
@@ -14,28 +22,46 @@
     settings:
       set:
         value:
-          encoding: utf-8
+          shell: bash
+          encoding: utf-8                      
           termencoding: utf-8
+          clipboard: unnamed
           updatetime: 200
           history: 1000
           undolevels: 1000
-          mouse: a
+          mouse: a              # enable using the mouse
+          scrolloff: 3
           wildmode: 'longest,list'
+          wildignore: '*.swp,*.bak,*.pyc,*.class'
           backspace: 'indent,eol,start'
           tabstop: 4
           shiftwidth: 4
         property:
           - expandtab
-          - incsearch
-          - hlsearch
-          - number
+          - incsearch           # search incrementally as being typed
+          - hlsearch            # highlight search results
+          - smartcase           # ignore case if search pattern is all lowercase, case-sensitive otherwise
+          - showmatch           # show matching parenthesis 
+          - number              # show line numbers
           - hidden
-          - autoread
-          - ttyfast
+          - autoread            # automatically read file changes
+          - ttyfast             # fast keyboard input
+          - wrap                # wrap lines only visually (do not enter \n)
+          - linebreak           # break only on special characters set in the 'breakat' option (" ^I!@*-+;:,./?")
+          - noswapfile
+          - title
+      let:
+        'mapleader': '","'
       other:
         - 'colorscheme elflord'
         - 'syntax on'
-    
+        - 'nnoremap / /\v'      # insert \v before any searched string to use non-vim regex
+        - 'vnoremap / /\v'      # insert \v before any searched string to use non-vim regex
+        - 'nnoremap <leader><space> :noh<cr>'   # clear screen after search
+        - 'au FocusLost * :wa'  # save on losing focus
+        - 'nnoremap j gj'       # map j to act as expected on long, wrapped lines
+        - 'nnoremap k gk'       # map k to act as expected on long, wrapped lines
+
     plugins:
       - name: 'Valloric/YouCompleteMe'
         set:
@@ -72,6 +98,12 @@
           NERDTreeShowHidden: 1
         other:
           - 'nmap <leader>n :NERDTreeToggle<CR>'
+      - name: 'scrooloose/nerdcommenter'
+        let:
+          'g:NERDSpaceDelims': 1
+          'g:NERDCommentEmptyLines': 1
+          'g:NERDTrimTrailingWhitespace': 1
+          'g:NERDToggleCheckAllLines': 1
       - name: 'terryma/vim-multiple-cursors'
       - name: 'tpope/vim-eunuch'
       - name: 'tpope/vim-surround'
