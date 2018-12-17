@@ -36,6 +36,7 @@
           backspace: 'indent,eol,start'
           tabstop: 4
           shiftwidth: 4
+          scrolloff: 10         # scroll on search so that at least N lines are above and below the current line
         property:
           - expandtab
           - incsearch           # search incrementally as being typed
