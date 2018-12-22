@@ -7,6 +7,12 @@
 # 4. https://github.com/davidhalter/dotfiles/blob/master/.vimrc
 # 5. https://github.com/jessfraz/.vim
 # 6. https://github.com/humiaozuzu/dot-vimrc
+# 7. https://github.com/akrawchyk/awesome-vim
+# 8. https://github.com/arusahni/dotfiles/blob/45c6655d46d1f672cc36f4e81c2a674484739ebc/vimrc#L42
+# 9. https://github.com/amix/vimrc
+# 10. http://marcgg.com/blog/2016/03/01/vimrc-example/
+# 11. https://dougblack.io/words/a-good-vimrc.html
+# 12. https://github.com/vgod/vimrc
 
 - hosts: localhost
   roles:

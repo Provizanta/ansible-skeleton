@@ -1,5 +1,17 @@
 ---
 
+# bashrc inspired by:
+# 1. https://medium.com/@waxzce/use-bashrc-d-directory-instead-of-bloated-bashrc-50204d5389ff
+# 2. https://github.com/junegunn/dotfiles
+# 3. https://gist.github.com/torifat/1254570
+# 4. https://github.com/nacitar/bashrc
+# 5. https://gist.github.com/illucent/8132033
+# 6. https://gist.github.com/redguardtoo/01868d7a13817c9845e8#file-bashrc-L96
+# 7. https://github.com/paulmooring/bashrc
+# 8. https://github.com/SuRaMoN/bashrc
+# 9. https://github.com/twolfson/sexy-bash-prompt
+# 10. https://github.com/gurjeet/home/blob/master/.bashrc
+
 - hosts: localhost
   roles:
     - role: user/shell
