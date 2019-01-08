@@ -11,7 +11,7 @@
 	path = roles/user/git
 	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-git.git
 [submodule "roles/user/ca"]
-	path = roles/user/ca
+	path = roles/config/ca
 	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-ca.git
 [submodule "roles/user/shell"]
 	path = roles/user/shell
@@ -25,3 +25,6 @@
 [submodule "roles/user/cerebro"]
 	path = roles/user/cerebro
 	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-cerebro.git
+[submodule "roles/config/systemd-unit"]
+	path = roles/config/systemd-unit
+	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-config-systemd-unit.git

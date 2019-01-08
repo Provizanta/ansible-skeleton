@@ -1,5 +1,9 @@
 ---
 
+machine:
+  user: vault_machine['user']
+  domain: vault_machine['domain']
+
 user:
   name: "{{ vault_user['name'] }}"
   email: "{{ vault_user['email'] }}"

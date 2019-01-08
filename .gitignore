@@ -15,6 +15,7 @@ playbooks/test
 
 roles/*
 !roles/user
+!roles/config
 
 hosts
 *.retry
