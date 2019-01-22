@@ -5,7 +5,7 @@
     - role: user/cerebro
       vars:
         settings:
-          hotkey: "Control+Shift+Space"
+          hotkey: "Control+Super+Space"
         plugins:
           - basic-apps
           - plugin-convert
