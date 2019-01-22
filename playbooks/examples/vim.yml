@@ -28,6 +28,7 @@
     settings:
       set:
         value:
+          viminfo: ""
           shell: bash
           encoding: utf-8                      
           termencoding: utf-8
