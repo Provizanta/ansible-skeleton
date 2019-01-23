@@ -1,23 +1,25 @@
-.ansible/
 .test/
 
-files/ssh-keys
-files/gpg-keys
-files/ca-trusted
+files/*
+!files/scripts/setup_ansible_venv.sh
+!files/scripts/setup_test_venv.sh
 
-!group_vars/all
 group_vars/
+!group_vars/all
 
 misc/
 
-playbooks/production
-playbooks/test
+playbooks/
+!playbooks/examples
 
 roles/*
 !roles/user
 !roles/config
 
+tasks
+
 hosts
 *.retry
 *.log
 vault*
+
