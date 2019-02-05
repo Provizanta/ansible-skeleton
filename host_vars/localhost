@@ -1,5 +1,5 @@
 ---
 
 user:
-  name: "{{ vault_user['name'] }}"
-  email: "{{ vault_user['email'] }}"
+  name: "{{ user['name'] }}"
+  email: "{{ user['email'] }}"
