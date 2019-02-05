@@ -3,6 +3,7 @@
 roles/*
 !roles/user
 !roles/config
+!roles/create
 
 *.retry
 *.log

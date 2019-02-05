@@ -28,3 +28,6 @@
 [submodule "roles/config/systemd-unit"]
 	path = roles/config/systemd-unit
 	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-config-systemd-unit.git
+[submodule "roles/create/dev/project"]
+	path = roles/create/dev/project
+	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-create-dev-project.git
