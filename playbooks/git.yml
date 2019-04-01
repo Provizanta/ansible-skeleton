@@ -1,13 +1,60 @@
 ---
 
 - hosts: localhost
+  become: no
+  environment: "{{ proxy_env | default({}) }}"
   roles:
     - role: user/git
       vars:
-        settings:
-          user:
-            name: "{{ user['name'] }}"
-            email: " {{ user['email'] }}"
+        configuration:
+          alias:
+            head: 'log --graph --pretty=tformat:"%Cblue %h %Cgreen %ad %Cred %an %Creset %s %Cblue%d%Creset" --abbrev-commit --decorate --parents --date=short -n32'
+            last: 'log -1 HEAD'
+            unstage: 'reset HEAD --'
+          blame:
+            coloring: "highlightRecent" 
+          color:
+            branch: always
+            diff: always 
+            interactive: always
+            status: always
+            ui: always
+            diff-highlight:
+              oldNormal: 'red bold'
+              oldHighlight: 'red bold 52'     
+              newNormal: 'green bold'
+              newHighlight: 'green bold 52'
+          core:
+            autocrlf: input
+            editor: vim
+            excludesfile: '~/.gitignore_global'
+            pager: less
+            whitespace: 'trailing-space,space-before-tab,cr-at-eol'
+          diff:
+            tool: meld
+          difftool:
+            prompt: false
+          format:
+            pretty: 'medium'
+          grep:
+            lineNumber: true
+            patternType: 'extended'
+          help:
+            autocorrect: 20 
+          merge:
+            ff: false
+            tool: vimdiff
+          mergetool:
+            diffmerge:
+              trustExitCode: true
+            prompt: false
+          pull:
+            rebase: true
+          push:
+            default: 'simple'
+            followTags: true
+          rebase:
+            autostash: true
+          tag:
+            sort: 'version:refname'
   
-  become: no
-  environment: "{{ proxy_env if proxy_env is defined else '' }}"

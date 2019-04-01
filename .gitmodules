@@ -1,6 +1,3 @@
-[submodule "roles/user/dev"]
-	path = roles/user/dev
-	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-dev.git
 [submodule "roles/user/keepass"]
 	path = roles/user/keepass
 	url = git@github.com:Teebor-Choka/Provisioning---Ansible-role-keepass.git

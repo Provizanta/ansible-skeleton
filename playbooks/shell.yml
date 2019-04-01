@@ -13,6 +13,8 @@
 # 10. https://github.com/gurjeet/home/blob/master/.bashrc
 
 - hosts: localhost
+  become: no
+  environment: "{{ proxy_env | default({}) }}"
   roles:
     - role: user/shell
       vars:
@@ -32,5 +34,4 @@
           set:
             notify: yes
             pipefail: yes
-  become: no
-  environment: "{{ proxy_env if proxy_env is defined else '' }}"
+

@@ -15,6 +15,8 @@
 # 12. https://github.com/vgod/vimrc
 
 - hosts: localhost
+  become: no
+  environment: "{{ proxy_env | default({}) }}"
   roles:
     - role: user/vim
       vars:
@@ -24,98 +26,96 @@
         flavor: neovim
         
   vars:
-    plugin_manager: vundle
-    settings:
-      set:
-        value:
-          viminfo: ""
-          shell: bash
-          encoding: utf-8                      
-          termencoding: utf-8
-          clipboard: unnamed
-          updatetime: 200
-          history: 1000
-          undolevels: 1000
-          mouse: a              # enable using the mouse
-          scrolloff: 3
-          wildmode: 'longest,list'
-          wildignore: '*.swp,*.bak,*.pyc,*.class'
-          backspace: 'indent,eol,start'
-          tabstop: 4
-          shiftwidth: 4
-          scrolloff: 10         # scroll on search so that at least N lines are above and below the current line
-        property:
-          - expandtab
-          - incsearch           # search incrementally as being typed
-          - hlsearch            # highlight search results
-          - smartcase           # ignore case if search pattern is all lowercase, case-sensitive otherwise
-          - showmatch           # show matching parenthesis 
-          - number              # show line numbers
-          - hidden
-          - autoread            # automatically read file changes
-          - ttyfast             # fast keyboard input
-          - wrap                # wrap lines only visually (do not enter \n)
-          - linebreak           # break only on special characters set in the 'breakat' option (" ^I!@*-+;:,./?")
-          - noswapfile
-          - title
-      let:
-        'mapleader': '","'
-      other:
-        - 'colorscheme elflord'
-        - 'syntax on'
-        - 'nnoremap / /\v'      # insert \v before any searched string to use non-vim regex
-        - 'vnoremap / /\v'      # insert \v before any searched string to use non-vim regex
-        - 'nnoremap <leader><space> :noh<cr>'   # clear screen after search
-        - 'au FocusLost * :wa'  # save on losing focus
-        - 'nnoremap j gj'       # map j to act as expected on long, wrapped lines
-        - 'nnoremap k gk'       # map k to act as expected on long, wrapped lines
+    configuration:
+      - name: basic configuration
+        block: |
+          set viminfo=
+          set updatetime=200
+          set shell=bash
+          set undolevels=1000
+          set encoding=utf-8
+          set wildignore=*.swp,*.bak,*.pyc,*.class
+          set tabstop=4
+          set backspace=indent,eol,start
+          set wildmode=longest,list
+          set shiftwidth=4
+          set scrolloff=10            # scroll on search so that at least N lines are above and below the current line
+          set mouse=a                 # enable using the mouse
+          set termencoding=utf-8
+          set history=1000
+          set expandtab
+          set incsearch               # search incrementally as being typed
+          set hlsearch                # highlight search results
+          set smartcase               # ignore case if search pattern is all lowercase, case-sensitive otherwise
+          set showmatch               # show matching parenthesis
+          set number                  # show line numbers
+          set hidden
+          set autoread                # automatically read file changes
+          set ttyfast                 # fast keyboard input
+          set wrap                    # wrap lines only visually (do not enter \n
+          set linebreak               # break only on special characters set in the 'breakat' option (" ^I!@*-+;:,./?")
+          set noswapfile
+          set title
+          let mapleader=","
+          colorscheme elflord
+          syntax on
+      - name: mappings
+        block: |
+          nnoremap / /\v     # insert \v before any searched string to use non-vim regex
+          vnoremap / /\v     # insert \v before any searched string to use non-vim regex
+          nnoremap <leader><space> :noh<cr>   # clear screen after search
+          au FocusLost * :wa                  # save on losing focus
+          nnoremap j gj      # map j to act as expected on long, wrapped lines
+          nnoremap k gk      # map k to act as expected on long, wrapped lines
+
+      - name: YAML bindings
+        block: |
+          au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
+          autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
     plugins:
       - name: 'Valloric/YouCompleteMe'
-        set:
-          value:
-            encoding: 'utf-8'
+        setttings: |
+          set encoding=utf-8
       - name: 'nathanaelkane/vim-indent-guides'
       - name: 'airblade/vim-gitgutter'
       - name: 'editorconfig/editorconfig-vim'
-        let:
-          'g:EditorConfig_exclude_patterns': "['scp://.*']"
+        settings: |
+          let g:EditorConfig_exclude_patterns=['scp://.*']
       - name: 'itchyny/lightline.vim'
-        set:
-          value:
-            laststatus: 2
-            showtabline: 2         
-        other:
-          - 'set guioptions-=e'
+        settings: |
+          set laststatus=2
+          set showtabline=2
+          set guioptions-=e
       - name: 'vim-syntastic/syntastic'
-        other:
-          - 'set statusline+=%#warningmsg#'
-          - 'set statusline+=%{SyntasticStatuslineFlag()}'
-          - 'set statusline+=%*'
-        let:
-          'g:syntastic_always_populate_loc_list': 1
-          'g:syntastic_auto_loc_list': 1
-          'g:syntastic_check_on_open': 1
-          'g:syntastic_check_on_wq': 0
-          'g:syntastic_python_pylint_exe': "'python3 -m pylint3'"
+        settings: |
+          let g:syntastic_always_populate_loc_list=1
+          let g:syntastic_check_on_open=1
+          let g:syntastic_auto_loc_list=1
+          let g:syntastic_python_pylint_exe='python3 -m pylint3'
+          let g:syntastic_check_on_wq=0
+          
+          set statusline+=%#warningmsg#
+          set statusline+=%{SyntasticStatuslineFlag()}
+          set statusline+=%*
       - name: 'flazz/vim-colorschemes'
       - name: 'junegunn/fzf.vim'
+      - name: 'mrk21/yaml-vim'
       - name: 'scrooloose/nerdtree'
-        let:
-          NERDTreeMapActivateNode: "'<right>'"
-          NERDTreeShowHidden: 1
-        other:
-          - 'nmap <leader>n :NERDTreeToggle<CR>'
+        settings: |
+          let NERDTreeShowHidden=1
+          let NERDTreeMapActivateNode='<right>'
+          
+          nmap <leader>n :NERDTreeToggle<CR>
       - name: 'scrooloose/nerdcommenter'
-        let:
-          'g:NERDSpaceDelims': 1
-          'g:NERDCommentEmptyLines': 1
-          'g:NERDTrimTrailingWhitespace': 1
-          'g:NERDToggleCheckAllLines': 1
+        settings: |
+          let g:NERDToggleCheckAllLines=1
+          let g:NERDCommentEmptyLines=1
+          let g:NERDSpaceDelims=1
+          let g:NERDTrimTrailingWhitespace=1
       - name: 'terryma/vim-multiple-cursors'
       - name: 'tpope/vim-eunuch'
       - name: 'tpope/vim-surround'
       - name: 'w0rp/ale'
       - name: 'ludovicchabant/vim-lawrencium'
-  become: no
-  environment: "{{ proxy_env if proxy_env is defined else '' }}"
+
