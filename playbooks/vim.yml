@@ -39,36 +39,43 @@
           set backspace=indent,eol,start
           set wildmode=longest,list
           set shiftwidth=4
-          set scrolloff=10            # scroll on search so that at least N lines are above and below the current line
-          set mouse=a                 # enable using the mouse
+          set scrolloff=10            " scroll on search so that at least N lines are above and below the current line
+          set mouse=a                 " enable using the mouse
           set termencoding=utf-8
           set history=1000
           set expandtab
-          set incsearch               # search incrementally as being typed
-          set hlsearch                # highlight search results
-          set smartcase               # ignore case if search pattern is all lowercase, case-sensitive otherwise
-          set showmatch               # show matching parenthesis
-          set number                  # show line numbers
+          set incsearch               " search incrementally as being typed
+          set hlsearch                " highlight search results
+          set smartcase               " ignore case if search pattern is all lowercase, case-sensitive otherwise
+          set showmatch               " show matching parenthesis
+          set number                  " show line numbers
           set hidden
-          set autoread                # automatically read file changes
-          set ttyfast                 # fast keyboard input
-          set wrap                    # wrap lines only visually (do not enter \n
-          set linebreak               # break only on special characters set in the 'breakat' option (" ^I!@*-+;:,./?")
+          set autoread                " automatically read file changes
+          set ttyfast                 " fast keyboard input
+          set wrap                    " wrap lines only visually
+          set linebreak               " break only on special characters set in the 'breakat' option (" ^I!@*-+;:,./?")
           set noswapfile
           set title
           let mapleader=","
           colorscheme elflord
           syntax on
-      - name: mappings
-        block: |
-          nnoremap / /\v     # insert \v before any searched string to use non-vim regex
-          vnoremap / /\v     # insert \v before any searched string to use non-vim regex
-          nnoremap <leader><space> :noh<cr>   # clear screen after search
-          au FocusLost * :wa                  # save on losing focus
-          nnoremap j gj      # map j to act as expected on long, wrapped lines
-          nnoremap k gk      # map k to act as expected on long, wrapped lines
 
-      - name: YAML bindings
+      - name: insert \v before any searched string to use non-vim regex
+        block: |
+          nnoremap / /\v
+          vnoremap / /\v
+
+      - name: clear screen after search
+        block: |
+          nnoremap <leader><space> :noh<cr>
+
+      - name: misc
+        block: |
+          au FocusLost * :wa
+          nnoremap j gj
+          nnoremap k gk
+
+      - name: bindings | YAML
         block: |
           au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
           autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -94,7 +101,6 @@
           let g:syntastic_auto_loc_list=1
           let g:syntastic_python_pylint_exe='python3 -m pylint3'
           let g:syntastic_check_on_wq=0
-          
           set statusline+=%#warningmsg#
           set statusline+=%{SyntasticStatuslineFlag()}
           set statusline+=%*
@@ -118,4 +124,3 @@
       - name: 'tpope/vim-surround'
       - name: 'w0rp/ale'
       - name: 'ludovicchabant/vim-lawrencium'
-
