@@ -21,9 +21,6 @@
     - role: user/vim
       vars:
         flavor: vim
-    - role: user/vim
-      vars:
-        flavor: neovim
         
   vars:
     configuration:
@@ -49,6 +46,7 @@
           set smartcase               " ignore case if search pattern is all lowercase, case-sensitive otherwise
           set showmatch               " show matching parenthesis
           set number                  " show line numbers
+          set relativenumber          " line numbers relative to the current line
           set hidden
           set autoread                " automatically read file changes
           set ttyfast                 " fast keyboard input
@@ -91,7 +89,6 @@
           let g:EditorConfig_exclude_patterns=['scp://.*']
       - name: 'itchyny/lightline.vim'
         settings: |
-          set laststatus=2
           set showtabline=2
           set guioptions-=e
       - name: 'vim-syntastic/syntastic'
@@ -124,3 +121,9 @@
       - name: 'tpope/vim-surround'
       - name: 'w0rp/ale'
       - name: 'ludovicchabant/vim-lawrencium'
+      - name: 'vim-scripts/vim-auto-save'
+        settings: |
+          let g:auto_save=1
+          let g:auto_save_silent=1
+          let g:auto_save_in_insert_mode=0
+          let g:auto_save_no_updatetime=1
