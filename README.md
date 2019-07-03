@@ -52,12 +52,3 @@ Any playbook can be run by executing a simple command, e.g. to execute a playboo
 The extra argument `-K` forces Ansible to request a sudo password.
 
 For more details about individual playbooks, see [playbook README](./playbooks/README.md)
-
-
-## Target system
-All of the roles are tested against **`XUbuntu 18.04`**.
-
-
-## Future plans
-- automatic CI-based testing for all roles in their minimum and maximum configurations
-- extend support to the latest version of all `Debian` and `Fedora` based distributions
