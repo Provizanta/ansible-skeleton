@@ -7,7 +7,7 @@ This project creates a self-contained `Ansible` skeleton (top-level directory co
 ## Setup Ansible environment
 In order to setup the ansible environment, clone the skeleton repository from github:
 
-    $ git clone https://github.com/Teebor-Choka/Provisioning---Ansible-skeleton.git ansible
+    $ git clone https://github.com/Provizanta/ansible-skeleton.git ansible
     $ cd ansible
 
 A hard pre-requisite to work with `Ansible` is `Python`. Futhermore, this project sets up virtual environments for execution and testing using the `pip`, therefore it is required as well:
