@@ -1,6 +1,0 @@
-ansible_python_interpreter: python3
-
-__ansible_dir__: "{{ inventory_dir }}/"
-
-proxy_env:
-  no_proxy: "localhost"
